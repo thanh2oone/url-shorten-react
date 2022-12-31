@@ -1,7 +1,8 @@
-import './ShortenControl.css';
+import '../css/ShortenControl.css';
 
 import * as React from 'react';
-import { Input, Card } from "@nextui-org/react";
+import { Input, Button } from "@nextui-org/react";
+import { Card } from 'reactstrap';
 
 class ShortenControl extends React.Component {
     constructor(props) {
@@ -55,30 +56,33 @@ class ShortenControl extends React.Component {
 
     render() {
         return (
-            <div className='container'>
-                <form style={{}} onSubmit={this.handleSubmit}>
-                    <Card css={{ mw: "500px" }}>
-                        <Card.Header>
+            <>
+                <form onSubmit={this.handleSubmit}>
+                    <Card id='shorten-card'>
+                        <div id='shorten-header'>
                             New URL
-                        </Card.Header>
-                        <Card.Body>
-                            <Input clearable label="Name" placeholder="https://" required
-                                type="url" color='primary' id='original' name='original'
-                                value={this.state.original} onChange={this.getInput} />
-                            <Card.Footer>
-                                <button type='submit' onChange={this.handleSubmit}>Rút gọn</button>
-                                <div style={{ float: 'left' }}>
-                                    {this.state.displayData &&
-                                        <a href={this.state.displayData} target="_blank" rel="noreferrer">
-                                            {this.state.displayData}
-                                        </a>
-                                    }
-                                </div>
-                            </Card.Footer>
-                        </Card.Body>
+                        </div>
+                        <div id='shorten-input'>
+                            <Input clearable placeholder="Your Link..." required
+                                type="url" id='original'
+                                value={this.state.original} onChange={this.getInput}
+                                css={{ width: '100%' }}
+                            />
+                        </div>
+                        <div id='shorten-footer'>
+                            <Button type='submit' onChange={this.handleSubmit} auto flat
+                            >Rút gọn</Button>
+                            <div>
+                                {this.state.displayData &&
+                                    <a href={this.state.displayData} target="_blank" rel="noreferrer">
+                                        {this.state.displayData}
+                                    </a>
+                                }
+                            </div>
+                        </div>
                     </Card>
                 </form>
-            </div >
+            </ >
         )
     }
 }

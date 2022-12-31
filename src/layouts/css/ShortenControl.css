@@ -1,0 +1,19 @@
+#shorten-card {
+    width: 500px;
+    height: auto;
+    margin: 40px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    border: none;
+    border-radius: 15px;
+}
+
+#shorten-header, #shorten-input {
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+#shorten-footer {
+    margin-top: -10px;
+}

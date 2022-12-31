@@ -1,0 +1,42 @@
+#url-title {
+    font-weight: bold;
+    margin: 40px 40px 0 40px;
+    padding: 20px;
+    background-color: white;
+    border: none;
+    border-radius: 15px 15px 0 0;
+}
+
+#url-card {
+    border-radius: 0 0 15px 15px;
+    margin: 0px 40px 40px 40px;
+    border: none;
+    width: auto;
+    height: 400px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    table-layout: fixed;
+}
+
+#url-card th {
+    background-color: #F2F2F2;
+    color: #73777B;
+}
+
+#url-card thead {
+    position: sticky;
+    top: 0;
+}
+
+tbody {
+    margin: 20px;
+    background-color: white;
+    height: 20px;
+}
+
+.action-icon {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    margin: 0 2.5px 0 0;
+}

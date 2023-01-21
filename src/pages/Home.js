@@ -42,12 +42,12 @@ const App = () => (
       </div>
 
       <div id='slide'>
-          <SlideRoutes>
-            <Route path="/" element={<ShortenControl />} />
-            <Route path="/allurls" element={<AllUrl />} />
-            <Route path="/signup" element={<SignUp />} />
-            <Route path="/login" element={<Login />} />
-          </SlideRoutes>
+        <SlideRoutes>
+          <Route path="/" element={<ShortenControl />} />
+          <Route path="/allurls" element={<AllUrl />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/login" element={<Login />} />
+        </SlideRoutes>
       </div>
     </div>
   </>

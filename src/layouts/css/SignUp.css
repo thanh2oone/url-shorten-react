@@ -1,0 +1,24 @@
+#signup-card {
+    width: 400px;
+    height: auto;
+    margin: 40px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    border: none;
+    border-radius: 15px;
+}
+
+#signup-header, #signup-input {
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+#email-header, #password-header,#cf-password-header {
+    font-weight: bold;
+    margin-bottom: 5px;
+} 
+
+#signup-footer {
+    margin-top: -10px;
+}

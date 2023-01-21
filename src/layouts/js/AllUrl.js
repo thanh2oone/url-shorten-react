@@ -23,17 +23,9 @@ class AllUrl extends React.Component {
         this.handleDelete = this.handleDelete.bind(this);
     }
 
-    static defaultProps = {
-        headerHeight: 48,
-        rowHeight: 48,
-    };
-
     componentDidMount() {
-        // this.callAPI()
-        //     .then(res => this.setState({ allUrl: res.urls }))
-        //     .catch(err => console.log(err));
-        axios.get('http://localhost:5000/api/url')
-            .then(res => {
+        axios.get(process.env.REACT_APP_BASE_BACK + '/api/url')
+            .then((res) => {
                 this.setState({ allUrl: res.data.urls })
             })
             .catch(err => console.log(err))
@@ -41,28 +33,19 @@ class AllUrl extends React.Component {
 
     callBackData() {
         setTimeout(() => {
-            axios.get('http://localhost:5000/api/url').then(res => {
-                this.setState({ allUrl: res.data.urls })
-            })
+            axios.get(process.env.REACT_APP_BASE_BACK + '/api/url')
+                .then(res => {
+                    this.setState({ allUrl: res.data.urls })
+                })
+                .catch(err => console.log(err))
         }, 70)
     }
 
     handleDelete(id) {
-        // const result = await fetch('http://localhost:5000/delete/' + shortid, {
-        //     method: 'DELETE',
-        //     headers: {
-        //         'Content-Type': 'appication/json'
-        //     }
-        // });
-        // const body = await result.json();
-
-        // if (result.status !== 200) throw Error(body.message);
-        // return body;
-        axios.delete('http://localhost:5000/delete/' + id)
+        axios.delete(process.env.REACT_APP_BASE_BACK + '/api/delete/' + id)
             .then((res) => {
                 if (res.status === 200) {
-                    // window.location.reload();
-                    console.log("ID " + "`" + id + "`" + " deleted");
+                    console.log("ID " + id + " deleted");
                 } else Promise.reject();
             })
             .catch(err => console.log(err))
@@ -127,28 +110,30 @@ class AllUrl extends React.Component {
 
         return (
             <>
-                <Card id='url-title'>
-                    All URLs
-                </Card>
-                <Card id='url-card'>
-                    <Table hover borderless>
-                        <thead>
-                            <tr>
-                                {columns.map((column) => (
-                                    <th scope='col'>
-                                        <div style={{ margin: '0 10px 0 10px' }}>
-                                            {column.name}
-                                        </div>
-                                    </th>
-                                ))}
-                            </tr>
-                        </thead>
+                <div id='url-body'>
+                    <Card id='url-title'>
+                        All URLs
+                    </Card>
+                    <Card id='url-card'>
+                        <Table hover borderless>
+                            <thead>
+                                <tr>
+                                    {columns.map((column) => (
+                                        <th scope='col'>
+                                            <div style={{ margin: '0 10px 0 10px' }}>
+                                                {column.name}
+                                            </div>
+                                        </th>
+                                    ))}
+                                </tr>
+                            </thead>
 
-                        <tbody>
-                            {listUrl}
-                        </tbody>
-                    </Table>
-                </Card>
+                            <tbody>
+                                {listUrl}
+                            </tbody>
+                        </Table>
+                    </Card>
+                </div>
             </>
         )
     }

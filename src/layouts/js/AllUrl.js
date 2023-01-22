@@ -31,25 +31,17 @@ class AllUrl extends React.Component {
             .catch(err => console.log(err))
     }
 
-    callBackData() {
-        setTimeout(() => {
-            axios.get(process.env.REACT_APP_BASE_BACK + '/api/url')
-                .then(res => {
-                    this.setState({ allUrl: res.data.urls })
-                })
-                .catch(err => console.log(err))
-        }, 70)
-    }
-
     handleDelete(id) {
         axios.delete(process.env.REACT_APP_BASE_BACK + '/api/delete/' + id)
             .then((res) => {
                 if (res.status === 200) {
                     console.log("ID " + id + " deleted");
+                    setTimeout(() => {
+                        this.componentDidMount()
+                    }, 70);
                 } else Promise.reject();
             })
             .catch(err => console.log(err))
-        this.callBackData();
     }
 
     truncate(str) {

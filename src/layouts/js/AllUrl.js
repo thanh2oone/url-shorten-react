@@ -36,9 +36,7 @@ class AllUrl extends React.Component {
             .then((res) => {
                 if (res.status === 200) {
                     console.log("ID " + id + " deleted");
-                    setTimeout(() => {
-                        this.componentDidMount()
-                    }, 200);
+                        this.componentDidMount();
                 } else Promise.reject();
             })
             .catch(err => console.log(err))

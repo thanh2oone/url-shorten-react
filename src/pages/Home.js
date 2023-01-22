@@ -13,7 +13,7 @@ import { BiCodeCurly } from 'react-icons/bi';
 import { RiHomeLine } from 'react-icons/ri';
 
 const navLink = [
-  { name: 'TURL', to: '/' },
+  { name: 'TURL' },
   { name: 'Home', to: '/', classIcon: <RiHomeLine className='nav-icon' /> },
   { name: 'All URLs', to: '/allurls', classIcon: <BiCodeCurly className='nav-icon' /> },
   { name: 'Sign Up', to: '/signup', classIcon: <TbHandClick className='nav-icon' /> },
@@ -27,7 +27,7 @@ const App = () => (
         {navLink.map((item) => {
           switch (item.name) {
             case 'TURL':
-              return <NavLink to={item.to} id='nav-brand' style={{ textDecoration: 'none', color: 'black' }}>{item.name}</NavLink>
+              return <div id='nav-brand' style={{ textDecoration: 'none', color: 'black' }}>{item.name}</div>
             default:
               return (
                 <>

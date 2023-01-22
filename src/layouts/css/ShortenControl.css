@@ -9,8 +9,7 @@
     border-radius: 15px;
 }
 
-#shorten-header, #shorten-input {
-    font-weight: bold;
+#shorten-input {
     margin-bottom: 20px;
 }
 

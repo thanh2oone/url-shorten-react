@@ -36,6 +36,7 @@ html {
     font-size: 50px;
     margin-bottom: 30px;
     margin-top: 20px;
+    font-weight: bold;
 }
 
 #nav-link {
@@ -59,4 +60,25 @@ html {
 
 #slide {
     width: 80%;
+}
+
+#url-title,
+#shorten-header,
+#login-header,
+#signup-header {
+    font-weight: bold;
+    margin-bottom: 20px;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#nav-brand {
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }

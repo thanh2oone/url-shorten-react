@@ -9,15 +9,16 @@
     border-radius: 15px;
 }
 
-#signup-header, #signup-input {
-    font-weight: bold;
+#signup-input {
     margin-bottom: 20px;
 }
 
-#email-header, #password-header,#cf-password-header {
+#email-header,
+#password-header,
+#cf-password-header {
     font-weight: bold;
     margin-bottom: 5px;
-} 
+}
 
 #signup-footer {
     margin-top: -10px;

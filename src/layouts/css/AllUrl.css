@@ -4,14 +4,6 @@
     margin: 40px;
 }
 
-#url-title {
-    font-weight: bold;
-    padding: 20px;
-    background-color: white;
-    border: none;
-    border-radius: 15px 15px 0 0;
-}
-
 #url-card {
     border-radius: 0 0 15px 15px;
     border: none;

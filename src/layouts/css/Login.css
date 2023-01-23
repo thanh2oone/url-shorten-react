@@ -9,6 +9,11 @@
     border-radius: 15px;
 }
 
+#login-header {
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
 #login-header, #login-input {
     font-weight: bold;
     margin-bottom: 20px;

@@ -9,6 +9,11 @@
     border-radius: 15px;
 }
 
+#signup-header {
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
 #signup-input {
     margin-bottom: 20px;
 }

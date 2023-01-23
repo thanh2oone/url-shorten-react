@@ -3,7 +3,6 @@ import '../css/Login.css';
 import * as React from 'react';
 import { Card, Input, Button } from 'reactstrap';
 import axios from 'axios';
-import Cookies from 'js-cookie';
 
 class Login extends React.Component {
     constructor(props) {
@@ -29,11 +28,6 @@ class Login extends React.Component {
             withCredentials: true,
             email: this.state.email,
             password: this.state.password
-        })
-        Cookies.set("access_token", '123456', {
-            httpOnly: true,
-            expires: 1, 
-            path: ''    
         })
         
         this.setState({

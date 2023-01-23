@@ -56,6 +56,11 @@ html {
 
 .nav-text {
     line-height: 30px;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 #slide {
@@ -66,8 +71,6 @@ html {
 #shorten-header,
 #login-header,
 #signup-header {
-    font-weight: bold;
-    margin-bottom: 20px;
     -webkit-user-select: none;
     -webkit-touch-callout: none;
     -moz-user-select: none;

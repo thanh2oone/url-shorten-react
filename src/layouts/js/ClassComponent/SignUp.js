@@ -29,8 +29,7 @@ class SignUp extends React.Component {
         const res = await axios.post(process.env.REACT_APP_BASE_BACK + '/api/signup', {
             email: this.state.email,
             password: this.state.password,
-            cfPassword: this.state.cfPassword,
-            timeSignUp: this.state.timeSignUp
+            cfPassword: this.state.cfPassword
         })
 
         if (this.state.password === this.state.cfPassword) {

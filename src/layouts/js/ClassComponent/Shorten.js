@@ -4,7 +4,7 @@ import * as React from 'react';
 import { Card, Input, Button } from 'reactstrap';
 import axios from 'axios';
 
-class ShortenControl extends React.Component {
+class Shorten extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -25,11 +25,8 @@ class ShortenControl extends React.Component {
         e.preventDefault();
        
         const res = await axios.post(process.env.REACT_APP_BASE_BACK + '/api/shorten', {
-            original: this.state.original,
-            shortid: this.state.shortID,
-            timeCreate: this.state.timeCreate   
+            original: this.state.original
         })
-        
         this.setState({
             displayData: res.data,
             original: ''
@@ -69,4 +66,4 @@ class ShortenControl extends React.Component {
     }
 }
 
-export default ShortenControl;
+export default Shorten;

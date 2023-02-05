@@ -31,13 +31,18 @@ class AllUrl extends React.Component {
             .catch(err => console.log(err))
     }
 
+    // componentDidUpdate(prevProps, prevState) {
+    //     // Avoid sending requests continuously
+    //     if (prevState.allUrl.length !== this.state.allUrl.length) {
+    //         console.log('Refresh data');
+    //     }
+    // }
+
     handleDelete(id) {
         axios.delete(process.env.REACT_APP_BASE_BACK + '/api/delete/' + id)
-            .then((res) => {
-                if (res.status === 200) {
-                    console.log("ID " + id + " deleted");
-                        this.componentDidMount();
-                } else Promise.reject();
+            .then(() => {
+                console.log("ID " + id + " deleted");
+                this.componentDidMount();
             })
             .catch(err => console.log(err))
     }

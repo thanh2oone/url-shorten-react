@@ -31,12 +31,17 @@ html {
     background-color: white;
 }
 
+@font-face {
+    font-family: 'BrandFont'; /*a name to be used later*/
+    src: url('../assets/fonts/BungeeShade-Regular.ttf'); /*URL to font*/
+}
+
 #nav-brand {
     text-align: center;
-    font-size: 50px;
     margin-bottom: 30px;
     margin-top: 20px;
-    font-weight: bold;
+    font-family: 'BrandFont';
+    font-size: 40px;
 }
 
 #nav-link {

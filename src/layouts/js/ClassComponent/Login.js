@@ -10,10 +10,11 @@ class Login extends React.Component {
         this.state = {
             email: '',
             password: '',
-            displayLog: ''
+            displayLog: '',
         };
         this.getInput = this.getInput.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleCookie = this.handleCookie.bind(this);
     }
 
     getInput(e) {
@@ -28,11 +29,11 @@ class Login extends React.Component {
             withCredentials: true,
             email: this.state.email,
             password: this.state.password
-        })
-        
+        });
+
         this.setState({
             displayLog: res.data
-        })
+        });
     }
 
     render() {

@@ -1,8 +1,8 @@
 import './Home.css';
-import ShortenControl from '../layouts/js/ShortenControl';
-import AllUrl from '../layouts/js/AllUrl';
-import Login from '../layouts/js/Login';
-import SignUp from '../layouts/js/SignUp';
+import Shorten from '../layouts/js/ClassComponent/Shorten';
+import AllUrl from '../layouts/js/ClassComponent/AllUrl';
+import Login from '../layouts/js/ClassComponent/Login';
+import SignUp from '../layouts/ClassComponent/js/SignUp';
 
 import * as React from 'react';
 import { BrowserRouter, Route, NavLink } from "react-router-dom";
@@ -43,7 +43,7 @@ const App = () => (
 
       <div id='slide'>
         <SlideRoutes>
-          <Route path="/" element={<ShortenControl />} />
+          <Route path="/" element={<Shorten />} />
           <Route path="/allurls" element={<AllUrl />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
@@ -54,22 +54,6 @@ const App = () => (
 );
 
 class Home extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      showComponent: false
-    }
-    this.showUrl = this.showUrl.bind(this)
-  }
-
-  showUrl(e) {
-    e.preventDefault();
-    this.setState((state) => ({
-      showComponent: !state.showComponent
-    })
-    )
-  }
-
   render() {
     return (
       <>

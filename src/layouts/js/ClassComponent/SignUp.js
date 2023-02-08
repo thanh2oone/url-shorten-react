@@ -1,4 +1,4 @@
-import '../css/SignUp.css';
+import '../../css/SignUp.css';
 
 import * as React from 'react';
 import { Card, Input, Button } from 'reactstrap';

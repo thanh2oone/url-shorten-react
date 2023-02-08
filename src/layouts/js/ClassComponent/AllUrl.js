@@ -1,4 +1,4 @@
-import '../css/AllUrl.css';
+import '../../css/AllUrl.css';
 import * as React from 'react';
 import axios from 'axios';
 import { AiOutlineCloseSquare } from 'react-icons/ai';

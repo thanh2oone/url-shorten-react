@@ -1,15 +1,20 @@
-import '../css/Login.css';
+import '../../css/Login.css';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { Card, Input, Button } from 'reactstrap';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+
+axios.defaults.withCredentials = true;
 
 const Login = () => {
-    const [values, setValues] = useState({
-        email: '',
-        password: ''
-    })
-    const [displayLog, setDisplayLog] = useState('');
+    const navigate = useNavigate();
+    const [values, setValues] = useState({ email: '', password: '' });
+    const [displayLog, setDisplayLog] = useState({
+        logged: false,
+        detail: ''
+    });
 
     const getInput = (e) => {
         setValues({
@@ -21,12 +26,19 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const res = await axios.post(process.env.REACT_APP_BASE_BACK + '/api/login', {
-            withCredentials: true,
             email: values.email,
             password: values.password
         });
+        setDisplayLog({
+            logged: res.data.logged,
+            detail: res.data.detail
+        });
 
-        setDisplayLog(res.data);
+        if (res.data.logged === true) {
+            alert(res.data.detail);
+            navigate('/');
+            window.location.reload(true);
+        }
     }
 
     return (
@@ -42,7 +54,7 @@ const Login = () => {
                     </div>
                     <div id='login-input'>
                         <Input placeholder="Email" required
-                            type="email" id='email' name='email'
+                            type="email" id='email-login' name='email'
                             value={values.email} onChange={getInput}
                             css={{ width: '100%' }}
                         />
@@ -53,17 +65,17 @@ const Login = () => {
                     </div>
                     <div id='login-input'>
                         <Input placeholder="Password" required
-                            type="password" id='password' name='password'
+                            type="password" id='password-login' name='password'
                             value={values.password} onChange={getInput}
                             css={{ width: '100%' }}
                         />
                     </div>
 
                     <div id='login-footer'>
-                        <Button type='submit' onChange={handleSubmit}
+                        <Button type='submit'
                         >Login</Button>
                         <h4>
-                            {displayLog && displayLog}
+                            {displayLog.detail !== '' && displayLog.detail}
                         </h4>
                     </div>
                 </Card>

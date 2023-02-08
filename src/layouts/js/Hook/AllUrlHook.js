@@ -1,11 +1,12 @@
-import '../css/AllUrl.css';
+import '../../css/AllUrl.css';
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import axios from 'axios';
 import { AiOutlineCloseSquare } from 'react-icons/ai';
 import { FiCopy } from 'react-icons/fi';
 import { BiEditAlt } from 'react-icons/bi';
 import { Table, Card } from 'reactstrap';
+import { useState, useEffect } from 'react';
 
 const columns = [
     { name: "#" },

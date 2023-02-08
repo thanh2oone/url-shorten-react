@@ -1,6 +1,6 @@
-import '../css/ShortenControl.css';
+import '../../css/ShortenControl.css';
 
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { Card, Input, Button } from 'reactstrap';
 import axios from 'axios';
 
@@ -10,7 +10,7 @@ const Shorten = () => {
 
     const getInput = (e) => {
         setOriginal(e.target.value);
-    } 
+    }
 
     const handleSubmit = async (e) => {
         e.preventDefault();

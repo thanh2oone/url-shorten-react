@@ -1,4 +1,4 @@
-import '../../css/ShortenControl.css';
+import '../css/ShortenControl.css';
 
 import React, { useState } from 'react';
 import { Card, Input, Button } from 'reactstrap';

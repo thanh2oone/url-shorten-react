@@ -1,11 +1,11 @@
 import { createRoot } from 'react-dom/client';
-import Home from './pages/HomeHook';
+import App from './pages/App';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Main = () => {
   return (
     <>
-      <Home />
+      <App />
     </>
   );
 }

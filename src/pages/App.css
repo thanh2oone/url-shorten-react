@@ -33,7 +33,7 @@ html {
 
 @font-face {
     font-family: 'BrandFont'; /*a name to be used later*/
-    src: url('../assets/fonts/BungeeShade-Regular.ttf'); /*URL to font*/
+    src: url('../../public/assets/fonts/BungeeShade-Regular.ttf'); /*URL to font*/
 }
 
 #nav-brand {

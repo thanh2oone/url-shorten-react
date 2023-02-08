@@ -1,8 +1,8 @@
-import './Home.css';
-import Shorten from '../layouts/js/Hook/ShortenHook';
-import AllUrl from '../layouts/js/Hook/AllUrlHook';
-import Login from '../layouts/js/Hook/LoginHook';
-import SignUp from '../layouts/js/Hook/SignUpHook';
+import './App.css';
+import Shorten from '../pages/js/Shorten';
+import AllUrl from '../pages/js/AllUrl';
+import Login from '../pages/js/Login';
+import SignUp from '../pages/js/SignUp';
 
 import React from 'react';
 import { BrowserRouter, Route, NavLink } from "react-router-dom";

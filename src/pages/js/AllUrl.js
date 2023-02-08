@@ -1,4 +1,4 @@
-import '../../css/AllUrl.css';
+import '../css/AllUrl.css';
 
 import React from 'react';
 import axios from 'axios';

@@ -1,6 +1,6 @@
 import '../css/SignUp.css';
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Card, Input, Button } from 'reactstrap';
 import axios from 'axios';
 

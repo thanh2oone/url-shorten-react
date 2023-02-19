@@ -1,20 +1,19 @@
 import '../css/Login.css';
 
-import React from 'react';
 import { Card, Input, Button } from 'reactstrap';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 axios.defaults.withCredentials = true;
 
 const Login = () => {
-    const navigate = useNavigate();
     const [values, setValues] = useState({ email: '', password: '' });
     const [displayLog, setDisplayLog] = useState({
         logged: false,
         detail: ''
     });
+    const navigate = useNavigate();
 
     const getInput = (e) => {
         setValues({
@@ -34,10 +33,10 @@ const Login = () => {
             detail: res.data.detail
         });
 
-        if (res.data.logged === true) {
+        if (res.data.logged) {
             alert(res.data.detail);
             navigate('/');
-            window.location.reload(true);
+            window.location.reload('/');
         }
     }
 

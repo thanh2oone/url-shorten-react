@@ -1,5 +1,5 @@
 import { createRoot } from 'react-dom/client';
-import App from './pages/App';
+import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Main = () => {

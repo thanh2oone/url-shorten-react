@@ -1,12 +1,13 @@
 import '../css/AllUrl.css';
 
-import React from 'react';
 import axios from 'axios';
 import { AiOutlineCloseSquare } from 'react-icons/ai';
 import { FiCopy } from 'react-icons/fi';
-import { BiEditAlt } from 'react-icons/bi';
 import { Table, Card } from 'reactstrap';
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { UncontrolledPopover, PopoverBody } from 'reactstrap';
 
 const columns = [
     { name: "#" },
@@ -18,28 +19,29 @@ const columns = [
 
 const AllUrl = () => {
     const [allUrl, setAllUrl] = useState([]);
+    const navigate = useNavigate();
 
     const refreshData = () => {
-        axios.get(process.env.REACT_APP_BASE_BACK + '/api/url')
+        axios.get(process.env.REACT_APP_BASE_BACK + '/api/allurls')
             .then((res) => {
-                setAllUrl(res.data.urls);
+                if (res.data.logged) setAllUrl(res.data.urls);
+                else navigate('/login');
             })
-            .catch(err => console.log(err));
+            .catch((err) => alert(err));
     }
+    const [copy, setCopy] = useState(false);
 
-    useEffect(() => {
-        refreshData();
-    }, [allUrl.length]); // Only re-run the effect if allUrl.length changes, or only []
+    useEffect((err) => {
+        if (err) console.error(err);
+        else refreshData();
+    },
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        [allUrl.length]); // Only re-run the effect if allUrl.length changes, or only []
 
-    const handleDelete = (id) => {
-        axios.delete(process.env.REACT_APP_BASE_BACK + '/api/delete/' + id)
-            .then((res) => {
-                if (res.status === 200) {
-                    console.log("ID " + id + " deleted");
-                    refreshData();
-                } else Promise.reject();
-            })
-            .catch(err => console.log(err))
+    const handleDelete = (shortid) => {
+        axios.delete(process.env.REACT_APP_BASE_BACK + '/api/delete/' + shortid)
+            .then(() => refreshData())
+            .catch((err) => alert(err))
     }
 
     const truncate = (str) => {
@@ -89,9 +91,23 @@ const AllUrl = () => {
 
             <td key={url._id}>
                 <div style={{ margin: '0 10px 0 10px' }}>
-                    <BiEditAlt color='#89C4E1' className='action-icon' />
-                    <FiCopy color='#54B435' className='action-icon' />
-                    <AiOutlineCloseSquare color='red' className='action-icon' onClick={() => handleDelete(url._id)} />
+                    <CopyToClipboard text={process.env.REACT_APP_BASE_BACK + '/' + url.shortid}
+                        onCopy={() => {
+                            setCopy(true)
+                        }}
+                    >
+                        <FiCopy color='#54B435' id='copy-url' className='action-icon' />
+                    </CopyToClipboard>
+                    <UncontrolledPopover
+                        placement="left"
+                        target="copy-url"
+                        trigger="focus"
+                    >
+                            <PopoverBody>
+                                Copied
+                            </PopoverBody>
+                    </UncontrolledPopover>
+                    <AiOutlineCloseSquare color='red' className='action-icon' onClick={() => handleDelete(url.shortid)} />
                 </div>
             </td>
         </tr>

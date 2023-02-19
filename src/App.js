@@ -1,8 +1,8 @@
 import './App.css';
-import Shorten from '../pages/js/Shorten';
-import AllUrl from '../pages/js/AllUrl';
-import Login from '../pages/js/Login';
-import SignUp from '../pages/js/SignUp';
+import Shorten from './pages/js/Shorten';
+import AllUrl from './pages/js/AllUrl';
+import Login from './pages/js/Login';
+import SignUp from './pages/js/SignUp';
 
 import React from 'react';
 import { BrowserRouter, Route, NavLink } from "react-router-dom";
@@ -21,7 +21,7 @@ const Home = () => {
     });
 
     const refreshData = () => {
-        axios.get(process.env.REACT_APP_BASE_BACK + '/')
+        axios.get(process.env.REACT_APP_BASE_BACK + '/api/home')
             .then((res) => {
                 setUserInfo({
                     logged: res.data.logged,
@@ -36,7 +36,10 @@ const Home = () => {
 
     const handleLogout = () => {
         axios.get(process.env.REACT_APP_BASE_BACK + '/api/logout')
-        refreshData();
+            .then(() => {
+                refreshData();
+            })
+            .catch((err) => alert(err))
     }
 
     return (
@@ -44,24 +47,19 @@ const Home = () => {
             <BrowserRouter>
                 <div id='body-content'>
                     <div id='side-vertical'>
+                        <div id='nav-brand' style={{ textDecoration: 'none', color: 'black' }}>TURL</div>
+                        <div id='nav-link'>
+                            <RiHomeLine className='nav-icon' />
+                            <NavLink className='nav-text' to='/' style={{ textDecoration: 'none', color: 'rgba(0,0,0,0.5)' }}>Home</NavLink>
+                        </div>
                         {userInfo.logged === true
                             ? <>
-                                <div id='nav-brand' style={{ textDecoration: 'none', color: 'black' }}>TURL</div>
-                                <div id='nav-link'>
-                                    <RiHomeLine className='nav-icon' />
-                                    <NavLink className='nav-text' to='/' style={{ textDecoration: 'none', color: 'rgba(0,0,0,0.5)' }}>Home</NavLink>
-                                </div>
                                 <div id='nav-link'>
                                     <BiCodeCurly className='nav-icon' />
-                                    <NavLink className='nav-text' to='/allurls' style={{ textDecoration: 'none', color: 'rgba(0,0,0,0.5)' }}>All URLS</NavLink>
+                                    <NavLink className='nav-text' to='/allurls' style={{ textDecoration: 'none', color: 'rgba(0,0,0,0.5)' }}>URLs</NavLink>
                                 </div>
                             </>
                             : <>
-                                <div id='nav-brand' style={{ textDecoration: 'none', color: 'black' }}>TURL</div>
-                                <div id='nav-link'>
-                                    <RiHomeLine className='nav-icon' />
-                                    <NavLink className='nav-text' to='/' style={{ textDecoration: 'none', color: 'rgba(0,0,0,0.5)' }}>Home</NavLink>
-                                </div>
                                 <div id='nav-link'>
                                     <TbHandClick className='nav-icon' />
                                     <NavLink className='nav-text' to='/signup' style={{ textDecoration: 'none', color: 'rgba(0,0,0,0.5)' }}>Sign Up</NavLink>
@@ -99,7 +97,6 @@ const Home = () => {
                                 <div id='avt-user' style={{ fontWeight: 'bold', margin: '20px' }}>
                                     Not log
                                 </div>
-
                             </>
                         }
                     </div>

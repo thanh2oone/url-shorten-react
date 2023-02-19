@@ -1,8 +1,11 @@
-import '../css/ShortenControl.css';
+import '../css/Shorten.css';
 
-import React, { useState } from 'react';
-import { Card, Input, Button } from 'reactstrap';
+import { useState } from 'react';
+import { Card, Input, Button, Alert } from 'reactstrap';
 import axios from 'axios';
+import { FiCopy } from 'react-icons/fi';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { UncontrolledPopover, PopoverBody } from 'reactstrap';
 
 const Shorten = () => {
     const [original, setOriginal] = useState('');
@@ -11,6 +14,7 @@ const Shorten = () => {
     const getInput = (e) => {
         setOriginal(e.target.value);
     }
+    const [copy, setCopy] = useState(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -40,13 +44,31 @@ const Shorten = () => {
                     <div id='shorten-footer'>
                         <Button type='submit' onChange={handleSubmit}
                         >Shorten</Button>
-                        <h4>
-                            {displayData &&
-                                <a href={displayData} target="_blank" rel="noreferrer">
-                                    {displayData}
-                                </a>
-                            }
-                        </h4>
+                        {displayData &&
+                            <div >
+                                <Alert color='success' style={{ margin: "20px 0 0 0 ", width: 'auto' }}>
+                                    <p style={{ display: 'inline', margin: '0 10px 0 0' }}>{displayData}</p>
+                                    <CopyToClipboard text={displayData}
+                                        onCopy={() => {
+                                            setCopy(true)
+                                        }}
+                                        style={{ display: 'inline' }}
+                                    >
+                                        <FiCopy color='#54B435' id='copy-url' className='action-icon' />
+                                    </CopyToClipboard>
+
+                                    <UncontrolledPopover
+                                        placement="left"
+                                        target="copy-url"
+                                        trigger="focus"
+                                    >
+                                        <PopoverBody>
+                                            Copied
+                                        </PopoverBody>
+                                    </UncontrolledPopover>
+                                </Alert>
+                            </div>
+                        }
                     </div>
                 </Card>
             </form>

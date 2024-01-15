@@ -29,6 +29,7 @@ const AllUrl = () => {
             })
             .catch((err) => alert(err));
     }
+    // eslint-disable-next-line
     const [copy, setCopy] = useState(false);
 
     useEffect((err) => {

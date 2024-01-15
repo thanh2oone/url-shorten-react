@@ -4,15 +4,13 @@ import { Card, Input, Button } from 'reactstrap';
 import axios from 'axios';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 axios.defaults.withCredentials = true;
 
 const Login = () => {
     const [values, setValues] = useState({ email: '', password: '' });
-    const [displayLog, setDisplayLog] = useState({
-        logged: false,
-        detail: ''
-    });
+    const [displayLog, setDisplayLog] = useState("");
     const navigate = useNavigate();
 
     const getInput = (e) => {
@@ -28,12 +26,11 @@ const Login = () => {
             email: values.email,
             password: values.password
         });
-        setDisplayLog({
-            logged: res.data.logged,
-            detail: res.data.detail
-        });
 
-        if (res.data.logged) {
+        setDisplayLog(res.data.detail)
+
+        const cookies = Cookies.get();
+        if (cookies) {
             alert(res.data.detail);
             navigate('/');
             window.location.reload('/');
@@ -74,7 +71,7 @@ const Login = () => {
                         <Button type='submit'
                         >Login</Button>
                         <h4>
-                            {displayLog.detail !== '' && displayLog.detail}
+                            {displayLog !== '' && displayLog}
                         </h4>
                     </div>
                 </Card>

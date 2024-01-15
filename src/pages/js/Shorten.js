@@ -14,6 +14,8 @@ const Shorten = () => {
     const getInput = (e) => {
         setOriginal(e.target.value);
     }
+    
+    // eslint-disable-next-line
     const [copy, setCopy] = useState(false);
 
     const handleSubmit = async (e) => {
